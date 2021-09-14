@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import Router from 'next/router';
-import firebase from '../lib/firebase';
+import firebase from 'src/lib/firebase';
 
 const AuthContext = createContext();
 

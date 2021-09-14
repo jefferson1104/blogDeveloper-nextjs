@@ -1,5 +1,5 @@
 import { Box, Heading } from '@chakra-ui/react';
-import useAuth from '../hooks/useAuth';
+import useAuth from 'src/hooks/useAuth';
 
 export default function Home() {
   const { user, signin } = useAuth();
