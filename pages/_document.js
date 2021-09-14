@@ -13,7 +13,7 @@ class MyDocument extends Document {
           <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap"
           />
         </Head>
         <body>

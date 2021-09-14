@@ -7,7 +7,7 @@ function Layout({ children }) {
   return (
     <Box bg={bgColor} minH="100vh">
       <Topbar />
-      <Flex flexDir="column" pt={20}>
+      <Flex flexDir="column" pt="62px">
         {children}
       </Flex>
     </Box>
