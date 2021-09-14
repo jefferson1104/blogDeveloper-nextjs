@@ -21,7 +21,7 @@ export function AuthProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   const signout = () => {
     try {
@@ -34,20 +34,22 @@ export function AuthProvider({ children }) {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
-    <AuthContext.Provider value={{
-      user,
-      loading,
-      signin,
-      signout
-    }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        signin,
+        signout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
-  )
+  );
 }
 
-export const AuthConsumer =  AuthContext.Consumer;
+export const AuthConsumer = AuthContext.Consumer;
 
 export default AuthContext;

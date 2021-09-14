@@ -6,12 +6,10 @@ export default function Home() {
 
   return (
     <div>
-      <h2>
-        Aprenda programação direto ao ponto 100% free.
-      </h2>
-      <button onClick={() => signin()}>
+      <h2>Aprenda programação direto ao ponto 100% free.</h2>
+      <button type="button" onClick={() => signin()}>
         Entrar com github
       </button>
     </div>
-  )
+  );
 }
