@@ -1,47 +1,92 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 import Router from 'next/router';
-import firebase from 'src/lib/firebase';
+import cookie from 'js-cookie';
+
+import firebase from '../lib/firebase';
 
 const AuthContext = createContext();
+
+const formatUser = async (user) => ({
+  uid: user.uid,
+  email: user.email,
+  name: user.displayName,
+  token: user.za,
+  provider: user.providerData[0].providerId,
+  photoUrl: user.photoURL,
+});
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const signin = () => {
+  const setSession = (session) => {
+    if (session) {
+      cookie.set('nextjs-website-auth', session, {
+        expires: 1,
+      });
+    } else {
+      cookie.remove('nextjs-website-auth');
+    }
+  };
+
+  const handleUser = async (currentUser) => {
+    if (currentUser) {
+      const formatedUser = await formatUser(currentUser);
+      setUser(formatedUser);
+      setSession(true);
+      return formatedUser.email;
+    }
+    setUser(false);
+    setSession(false);
+    return false;
+  };
+
+  const signinGitHub = async () => {
     try {
       setLoading(true);
-      return firebase
+      const response = await firebase
         .auth()
-        .signInWithPopup(new firebase.auth.GithubAuthProvider())
-        .then((response) => {
-          setUser(response.user);
-          Router.push('/dashboard');
-        });
+        .signInWithPopup(new firebase.auth.GithubAuthProvider());
+      handleUser(response.user);
     } finally {
       setLoading(false);
     }
   };
 
-  const signout = () => {
+  const signinGoogle = async () => {
+    try {
+      setLoading(true);
+      const response = await firebase
+        .auth()
+        .signInWithPopup(new firebase.auth.GoogleAuthProvider());
+      handleUser(response.user);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const signout = async () => {
     try {
       Router.push('/');
-
-      return firebase
-        .auth()
-        .signOut()
-        .then(() => setUser(false));
+      await firebase.auth().signOut();
+      handleUser(false);
     } finally {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onIdTokenChanged(handleUser);
+    return () => unsubscribe();
+  }, []);
 
   return (
     <AuthContext.Provider
       value={{
         user,
         loading,
-        signin,
+        signinGitHub,
+        signinGoogle,
         signout,
       }}
     >
