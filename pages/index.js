@@ -1,10 +1,11 @@
 import { Heading, Box, Flex, Button, Text } from '@chakra-ui/react';
 // import useAuth from 'src/hooks/useAuth';
 import Layout from 'src/components/Layout';
+import { getAllTechnologies } from 'src/lib/dato-cms';
 
-const Cover = () => {
+const Cover = ({ technologies }) => {
   const bgColor = '#FFF';
-
+  console.log(technologies);
   return (
     <Box bgColor={bgColor}>
       <Flex justifyContent="center" alignItems="center" py={20}>
@@ -51,12 +52,23 @@ const Cover = () => {
   );
 };
 
-export default function Home() {
+export default function Home({ technologies }) {
   // const { user, signin } = useAuth();
 
   return (
     <Layout>
-      <Cover />
+      <Cover technologies={technologies} />
     </Layout>
   );
 }
+
+export const getStaticProps = async () => {
+  const technologies = await getAllTechnologies();
+
+  return {
+    props: {
+      technologies,
+    },
+    revalidate: 120,
+  };
+};

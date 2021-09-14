@@ -1,9 +1,12 @@
-import { Flex, Box } from '@chakra-ui/react';
+import { Flex, Box, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 
 function Topbar() {
-  const bgColor = '#FFF';
-  const color = '#1A202C';
-  const borderColor = '#DDD';
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  const bgColor = useColorModeValue('#FFFFFF', '#1A202C');
+  const color = useColorModeValue('#1A202C', '#EDEEEE');
+  const borderColor = useColorModeValue('#DDD', '#27272A');
 
   return (
     <Flex
@@ -25,6 +28,11 @@ function Topbar() {
       >
         <Box>SoaresDev</Box>
         <Box>Login</Box>
+        {colorMode === 'light' ? (
+          <MoonIcon w={6} h={6} onClick={toggleColorMode} />
+        ) : (
+          <SunIcon w={6} h={6} onClick={toggleColorMode} />
+        )}
       </Flex>
     </Flex>
   );
