@@ -15,8 +15,10 @@ import {
 } from '@chakra-ui/react';
 
 // import useAuth from 'src/hooks/useAuth';
+import { getAllTechnologies, getAllSeries } from 'src/lib/dato-cms';
 import Layout from 'src/components/Layout';
-import { getAllTechnologies } from 'src/lib/dato-cms';
+import SerieCard from 'src/components/SerieCard';
+import Footer from 'src/components/Footer';
 
 const Cover = ({ technologies }) => {
   const [currentTechnologies, setTechnologies] = useState(technologies);
@@ -137,22 +139,41 @@ const Cover = ({ technologies }) => {
   );
 };
 
-export default function Home({ technologies }) {
+const Series = ({ series }) => (
+  <Flex id="series" justify="center">
+    <Flex w="full" maxW="1200px" px={[4, 8]} mt={10} direction="column">
+      <Heading mb={4}>Séries</Heading>
+      <SimpleGrid columns={[1, null, 3]} spacing="40px">
+        {series.map((serie) => (
+          <SerieCard serie={serie} key={serie.id} />
+        ))}
+      </SimpleGrid>
+    </Flex>
+  </Flex>
+);
+
+export default function Home({ technologies, series }) {
   // const { user, signin } = useAuth();
 
   return (
     <Layout>
-      <Cover technologies={technologies} />
+      <Box pb={10}>
+        <Cover technologies={technologies} />
+        <Series series={series} />
+        <Footer />
+      </Box>
     </Layout>
   );
 }
 
 export const getStaticProps = async () => {
   const technologies = await getAllTechnologies();
+  const series = await getAllSeries();
 
   return {
     props: {
       technologies,
+      series,
     },
     revalidate: 120,
   };
