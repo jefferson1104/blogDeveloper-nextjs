@@ -1,11 +1,39 @@
-import { Heading, Box, Flex, Button, Text } from '@chakra-ui/react';
+import { useState } from 'react';
+import Image from 'next/image';
+import {
+  Heading,
+  Button,
+  Flex,
+  Text,
+  Box,
+  SimpleGrid,
+  useColorModeValue,
+  Wrap,
+  WrapItem,
+  Center,
+  Link,
+} from '@chakra-ui/react';
+
 // import useAuth from 'src/hooks/useAuth';
 import Layout from 'src/components/Layout';
 import { getAllTechnologies } from 'src/lib/dato-cms';
 
 const Cover = ({ technologies }) => {
-  const bgColor = '#FFF';
-  console.log(technologies);
+  const [currentTechnologies, setTechnologies] = useState(technologies);
+  const bgColor = useColorModeValue('#FFFFFF', '#1A202C');
+
+  const handleShowAllTechnologies = () => {
+    const techs = currentTechnologies.map((technology) => {
+      technology.defaultVisible = true;
+      return technology;
+    });
+    setTechnologies(techs);
+  };
+
+  const hiddenTechnologies = currentTechnologies?.filter(
+    (t) => !t.defaultVisible,
+  ).length;
+
   return (
     <Box bgColor={bgColor}>
       <Flex justifyContent="center" alignItems="center" py={20}>
@@ -45,6 +73,63 @@ const Cover = ({ technologies }) => {
             >
               Bora começar!
             </Button>
+          </Box>
+          <Box>
+            <Wrap>
+              {currentTechnologies
+                ?.filter((f) => f.defaultVisible)
+                ?.map((tech) => (
+                  <WrapItem>
+                    <Center
+                      w="100px"
+                      h="100px"
+                      borderWidth="1px"
+                      borderRadius="lg"
+                      overflow="hidden"
+                      flexDirection="column"
+                    >
+                      <Image
+                        src={tech.logo.url}
+                        alt={tech.name}
+                        width={40}
+                        height={40}
+                        title={tech.name}
+                      />
+                      <Text
+                        fontSize="sm"
+                        textAlign="center"
+                        fontWeight="bold"
+                        mt={2}
+                      >
+                        {tech.name}
+                      </Text>
+                    </Center>
+                  </WrapItem>
+                ))}
+              {hiddenTechnologies > 0 && (
+                <WrapItem>
+                  <Center
+                    w="100px"
+                    h="100px"
+                    borderWidth="1px"
+                    borderRadius="lg"
+                    overflow="hidden"
+                    flexDirection="column"
+                  >
+                    <Link onClick={handleShowAllTechnologies}>
+                      <Text
+                        fontSize="sm"
+                        textAlign="center"
+                        fontWeight="bold"
+                        mt={2}
+                      >
+                        {`+${hiddenTechnologies} outras`}
+                      </Text>
+                    </Link>
+                  </Center>
+                </WrapItem>
+              )}
+            </Wrap>
           </Box>
         </Flex>
       </Flex>
