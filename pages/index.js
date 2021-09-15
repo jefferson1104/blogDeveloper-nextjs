@@ -198,7 +198,7 @@ export const getStaticProps = async () => {
       technologies,
       series,
     },
-    revalidate: 120,
+    revalidate: 60,
   };
 };
 
