@@ -9,7 +9,12 @@ import {
   Stack,
   Link,
 } from '@chakra-ui/react';
-import { FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import {
+  SiInstagram,
+  SiLinkedin,
+  SiGithub,
+  SiGooglechrome,
+} from 'react-icons/si';
 
 function About() {
   return (
@@ -25,17 +30,20 @@ function About() {
           direction="column"
         >
           <Heading as="h3" size="xl" mb={2}>
-            @lucasnhimi
+            @jeffersonsjunior
           </Heading>
           <Stack direction="row" spacing={2}>
-            <Link href="https://www.instagram.com/lucasnhimi">
-              <Icon w={6} h={6} as={FaInstagram} />
+            <Link href="https://www.instagram.com/jeffersonsjunior">
+              <Icon w={6} h={6} as={SiInstagram} />
             </Link>
-            <Link href="https://www.linkedin.com/in/lucasnhimi">
-              <Icon w={6} h={6} as={FaLinkedin} />
+            <Link href="https://www.linkedin.com/in/jeffersonsjunior">
+              <Icon w={6} h={6} as={SiLinkedin} />
             </Link>
-            <Link href="https://www.youtube.com/channel/UCVE9-HO_GzLtDK4IGKVSYXA">
-              <Icon w={6} h={6} as={FaYoutube} />
+            <Link href="https://github.com/jefferson1104">
+              <Icon w={6} h={6} as={SiGithub} />
+            </Link>
+            <Link href="https://soaresdev.com">
+              <Icon w={6} h={6} as={SiGooglechrome} />
             </Link>
           </Stack>
         </Flex>
@@ -48,25 +56,27 @@ function About() {
             position="relative"
           >
             <Box top="-8" position="absolute">
-              <Avatar size="xl" src="/avatar.jpeg" />
+              <Avatar
+                size="xl"
+                src="https://avatars.githubusercontent.com/u/48356215?v=4"
+              />
             </Box>
             <Box ml="105px" mt={1}>
               <Heading as="h3" size="md">
-                Lucas Nhimi
+                Jefferson Soares
               </Heading>
               <Text fontSize="sm">Fullstack Developer</Text>
             </Box>
             <Box mt={10}>
               <Text fontSize="sm">
                 Profissional apaixonado por tecnologia e um eterno aprendiz.
-                Constantemente compartilhando conhecimentos para ajudar na
-                formação e transformação de profissionais da área de tecnologia.
-                Experiência em desenvolvimento de software para empresas de
-                grande porte no Brasil, LATAM, Europa e EUA. Atuei como CTO e
-                Consultor em desenvolvimento, arquitetura e performance de
-                software. Formação de processos e equipes de alta performance de
-                desenvolvimento de software. Vou compartilhar um pouco das
-                experiências que tive durante estes anos.
+                Constantemente compartilhando conhecimentos no meu{' '}
+                <strong>blog.soaresdev.com</strong> para ajudar a comunidade de
+                devs. Experiência em desenvolvimento de software back-end,
+                front-end e mobile. Atuei como desenvolvedor web com PHP e
+                Laravel, hoje eu atuo como dev front-end utilizando a tecnologia
+                React.js em uma das maiores empresas do setor de Loyalt
+                Marketplace do Brasil.
               </Text>
             </Box>
           </Flex>

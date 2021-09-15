@@ -15,17 +15,7 @@ const Footer = () => (
       fontWeight="medium"
       color="gray.500"
       target="_blank"
-      href="https://www.youtube.com/channel/UCVE9-HO_GzLtDK4IGKVSYXA"
-    >
-      YouTube
-    </Link>
-    <Link
-      fontSize="sm"
-      mr={4}
-      fontWeight="medium"
-      color="gray.500"
-      target="_blank"
-      href="https://www.instagram.com/lucasnhimi"
+      href="https://www.instagram.com/jeffersonsjunior"
     >
       Instagram
     </Link>
@@ -35,9 +25,19 @@ const Footer = () => (
       fontWeight="medium"
       color="gray.500"
       target="_blank"
-      href="https://www.linkedin.com/in/lucasnhimi"
+      href="https://www.linkedin.com/in/jeffersonsjunior"
     >
       LinkedIn
+    </Link>
+    <Link
+      fontSize="sm"
+      mr={4}
+      fontWeight="medium"
+      color="gray.500"
+      target="_blank"
+      href="https://soaresdev.com"
+    >
+      soaresDev
     </Link>
   </Flex>
 );
