@@ -55,7 +55,7 @@ const SerieViewContent = ({ serie, openAuthModal }) => {
                 </Heading>
                 <List spacing={3}>
                   {serie.features?.map((feature) => (
-                    <ListItem>
+                    <ListItem key={feature.id}>
                       <ListIcon as={MdCheckCircle} color="green.500" />
                       {feature.name}
                     </ListItem>
@@ -69,7 +69,7 @@ const SerieViewContent = ({ serie, openAuthModal }) => {
                 </Heading>
                 <Accordion defaultIndex={[0]} allowMultiple>
                   {serie?.seasons?.map((season) => (
-                    <AccordionItem>
+                    <AccordionItem key={season.id}>
                       <AccordionButton>
                         <Box flex="1" textAlign="left">
                           {season.name}
@@ -79,7 +79,7 @@ const SerieViewContent = ({ serie, openAuthModal }) => {
                       <AccordionPanel pb={4}>
                         <List spacing={3}>
                           {season.episodes.map((episode) => (
-                            <ListItem>
+                            <ListItem key={episode.id}>
                               <Flex
                                 alignItems="center"
                                 justifyContent="space-between"

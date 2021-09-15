@@ -81,7 +81,7 @@ const Cover = ({ technologies }) => {
               {currentTechnologies
                 ?.filter((f) => f.defaultVisible)
                 ?.map((tech) => (
-                  <WrapItem>
+                  <WrapItem key={tech.id}>
                     <Center
                       w="100px"
                       h="100px"
