@@ -16,7 +16,7 @@ import {
   AccordionIcon,
   Link,
 } from '@chakra-ui/react';
-import { MdCheckCircle, MdPlayCircleOutline } from 'react-icons/md';
+import { MdCheckCircle, MdPlayCircleFilled } from 'react-icons/md';
 import Image from 'next/image';
 import useAuth from 'src/hooks/useAuth';
 import { useRouter } from 'next/router';
@@ -91,7 +91,7 @@ const SerieViewContent = ({ serie, openAuthModal }) => {
                                   }
                                 >
                                   <ListIcon
-                                    as={MdPlayCircleOutline}
+                                    as={MdPlayCircleFilled}
                                     cursor="pointer"
                                   />
                                   <Text fontSize="sm" fontWeight="medium">
@@ -119,9 +119,6 @@ const SerieViewContent = ({ serie, openAuthModal }) => {
               />
             </GridItem>
           </Grid>
-          {/* <Heading as="h3" size="md">
-              {serie.name}
-            </Heading> */}
         </Flex>
       </Flex>
     </Box>

@@ -2,7 +2,7 @@ import NextLink from 'next/link';
 import {
   Flex,
   Link,
-  Icon,
+  Box,
   useColorMode,
   useColorModeValue,
   Button,
@@ -49,7 +49,9 @@ function Topbar({ openAuthModal }) {
           <NextLink href="/" passHref>
             <Link>
               <Heading size="md" mr={4} display={['none', 'block']}>
-                lucasnhimi.io
+                <Box bgGradient="linear(to-l, #7928CA, #FF0080)" bgClip="text">
+                  SoaresDev
+                </Box>
               </Heading>
             </Link>
           </NextLink>
@@ -74,8 +76,6 @@ function Topbar({ openAuthModal }) {
                 size="sm"
               />
               <MenuList>
-                <MenuItem>Perfil</MenuItem>
-                <MenuItem>Meus vídeos</MenuItem>
                 <MenuItem onClick={() => signout()}>Sair</MenuItem>
               </MenuList>
             </Menu>

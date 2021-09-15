@@ -38,7 +38,7 @@ const Cover = ({ technologies }) => {
 
   return (
     <Box bgColor={bgColor}>
-      <Flex justifyContent="center" alignItems="center" py={20}>
+      <Flex justifyContent="center" alignItems="center" py={4}>
         <Flex
           px={[4, 8]}
           py={[0, 20]}
@@ -52,10 +52,10 @@ const Cover = ({ technologies }) => {
             mb={4}
             fontWeight="xBold"
           >
-            Aprenda programação
+            Dicas, Guias e tutoriais
             <Box>direto ao ponto </Box>
             <Box bgGradient="linear(to-l, #7928CA, #FF0080)" bgClip="text">
-              100% free.
+              para você manter sua evolução.
             </Box>
           </Heading>
           <Text fontSize={{ base: '16px', md: '20px', lg: '22px' }}>
