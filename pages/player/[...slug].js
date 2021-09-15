@@ -65,8 +65,8 @@ function Player({ episode }) {
               >
                 {episode.name}
               </Text>
-              <Box pb={[20, 20, 5]}>
-                <Stack direction="row" h="100px">
+              <Box pb={10}>
+                <Stack direction="row">
                   <Flex flexDirection="column">
                     <Divider />
                     <Stack spacing={3} pt={5}>

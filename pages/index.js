@@ -14,11 +14,13 @@ import {
   Link,
 } from '@chakra-ui/react';
 
-// import useAuth from 'src/hooks/useAuth';
 import { getAllTechnologies, getAllSeries } from 'src/lib/dato-cms';
 import Layout from 'src/components/Layout';
 import SerieCard from 'src/components/SerieCard';
 import Footer from 'src/components/Footer';
+import useAuth from 'src/hooks/useAuth';
+import { useRouter } from 'next/router';
+import withAuthModal from 'src/components/Auth';
 
 const Cover = ({ technologies }) => {
   const [currentTechnologies, setTechnologies] = useState(technologies);
@@ -52,7 +54,7 @@ const Cover = ({ technologies }) => {
             mb={4}
             fontWeight="xBold"
           >
-            Dicas, Guias e tutoriais
+            Dicas, guias e tutoriais
             <Box>direto ao ponto </Box>
             <Box bgGradient="linear(to-l, #7928CA, #FF0080)" bgClip="text">
               para você manter sua evolução.
@@ -139,27 +141,48 @@ const Cover = ({ technologies }) => {
   );
 };
 
-const Series = ({ series }) => (
-  <Flex id="series" justify="center">
-    <Flex w="full" maxW="1200px" px={[4, 8]} mt={10} direction="column">
-      <Heading mb={4}>Séries</Heading>
-      <SimpleGrid columns={[1, null, 3]} spacing="40px">
-        {series.map((serie) => (
-          <SerieCard serie={serie} key={serie.id} />
-        ))}
-      </SimpleGrid>
+const Series = ({ series, openAuthModal }) => {
+  const { user } = useAuth();
+  const router = useRouter();
+
+  const goToSeriesPage = () => {
+    if (!user) {
+      openAuthModal();
+    } else {
+      router.push(`/allseries`);
+    }
+  };
+
+  return (
+    <Flex id="series" justify="center">
+      <Flex w="full" maxW="1200px" px={[4, 8]} mt={10} direction="column">
+        <Heading mb={4}>Séries</Heading>
+        <SimpleGrid columns={[1, null, 3]} spacing="40px">
+          {series
+            .map((serie) => <SerieCard serie={serie} key={serie.id} />)
+            .slice(0, 3)}
+        </SimpleGrid>
+        <Flex justifyContent="flex-end" alignItems="center" mt={5}>
+          <Button
+            size="sm"
+            variant="outline"
+            colorScheme="purple"
+            onClick={() => goToSeriesPage()}
+          >
+            Ver todos
+          </Button>
+        </Flex>
+      </Flex>
     </Flex>
-  </Flex>
-);
+  );
+};
 
-export default function Home({ technologies, series }) {
-  // const { user, signin } = useAuth();
-
+function Home({ technologies, series, openAuthModal }) {
   return (
     <Layout>
       <Box pb={10}>
         <Cover technologies={technologies} />
-        <Series series={series} />
+        <Series series={series} openAuthModal={openAuthModal} />
         <Footer />
       </Box>
     </Layout>
@@ -178,3 +201,5 @@ export const getStaticProps = async () => {
     revalidate: 120,
   };
 };
+
+export default withAuthModal(Home);
