@@ -8,7 +8,7 @@ function Privacy() {
       <Flex justify="center" alignItems="center" direction="column">
         <Flex w="full" maxW="1200px" px={[4, 8]} mt={10} direction="column">
           <Text fontSize={{ base: '16px', md: '20px', lg: '22px' }}>
-            MIT License Copyright (c) 2020 Lucas Nhimi Permission is hereby
+            MIT License Copyright (c) 2020 Jefferson Soares Permission is hereby
             granted, free of charge, to any person obtaining a copy of this
             software and associated documentation files (the Software), to deal
             in the Software without restriction, including without limitation
