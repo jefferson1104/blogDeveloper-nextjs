@@ -1,6 +1,7 @@
 import Layout from 'src/components/Layout';
 import { getAllFullSeries } from 'src/lib/dato-cms';
 import SerieView from 'src/components/SerieView';
+import Footer from 'src/components/Footer';
 
 function SeriePage({ serie }) {
   return (
@@ -10,6 +11,7 @@ function SeriePage({ serie }) {
       description={serie.description}
     >
       <SerieView serie={serie} />
+      <Footer />
     </Layout>
   );
 }

@@ -3,6 +3,7 @@ import { getAllFullSeries } from 'src/lib/dato-cms';
 import { Heading, Flex, SimpleGrid } from '@chakra-ui/react';
 import SerieCard from 'src/components/SerieCard';
 import Layout from 'src/components/Layout';
+import Footer from 'src/components/Footer';
 
 function Allseries({ series }) {
   return (
@@ -20,7 +21,7 @@ function Allseries({ series }) {
         />
       </Head>
       <Layout>
-        <Flex id="series" justify="center" pb={20}>
+        <Flex id="series" justify="center" pb={10}>
           <Flex w="full" maxW="1200px" px={[4, 8]} mt={10} direction="column">
             <Heading mb={4}>Todas as séries</Heading>
             <SimpleGrid columns={[1, null, 3]} spacing="40px">
@@ -30,6 +31,7 @@ function Allseries({ series }) {
             </SimpleGrid>
           </Flex>
         </Flex>
+        <Footer />
       </Layout>
     </>
   );

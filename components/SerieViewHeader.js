@@ -22,7 +22,7 @@ const SerieViewHeader = ({ serie, openAuthModal }) => {
       openAuthModal();
     } else {
       router.push(
-        `/player/${serie.slug}/${serie.seasons[0].slug}/${serie.seasons[0].episodes[0].slug}`,
+        `/player/${serie.slug}/${serie.seasons[0].id}/${serie.seasons[0].episodes[0].slug}`,
       );
     }
   };

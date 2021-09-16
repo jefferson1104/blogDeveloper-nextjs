@@ -12,6 +12,7 @@ import { getAllEpisodes } from 'src/lib/dato-cms';
 import Layout from 'src/components/Layout';
 import { useRouter } from 'next/router';
 import { ArrowLeftIcon } from '@chakra-ui/icons';
+import Footer from 'src/components/Footer';
 
 function Player({ episode }) {
   const router = useRouter();
@@ -97,6 +98,7 @@ function Player({ episode }) {
               </Box>
             </Flex>
           </Flex>
+          <Footer />
         </Box>
       </Layout>
     </div>
