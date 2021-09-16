@@ -30,7 +30,7 @@ const SerieViewContent = ({ serie, openAuthModal }) => {
     if (!user) {
       openAuthModal();
     } else {
-      router.push(`/player/${serie.slug}/${season.slug}/${episode.slug}`);
+      router.push(`/player/${serie.slug}/${season.id}/${episode.slug}`);
     }
   };
 

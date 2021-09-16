@@ -15,6 +15,7 @@ import { ArrowLeftIcon } from '@chakra-ui/icons';
 
 function Player({ episode }) {
   const router = useRouter();
+
   return (
     <div>
       <Head>
@@ -104,8 +105,9 @@ function Player({ episode }) {
 
 export async function getServerSideProps({ params }) {
   const slug = params.slug[2];
+  const idSeason = params.slug[1];
 
-  const episodes = await getAllEpisodes();
+  const episodes = await getAllEpisodes(idSeason);
   const episode = episodes.find((ep) => ep.slug === slug) || null;
 
   if (!episode) {

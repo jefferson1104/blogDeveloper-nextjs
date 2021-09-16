@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { getAllSeries } from 'src/lib/dato-cms';
+import { getAllFullSeries } from 'src/lib/dato-cms';
 import { Heading, Flex, SimpleGrid } from '@chakra-ui/react';
 import SerieCard from 'src/components/SerieCard';
 import Layout from 'src/components/Layout';
@@ -36,7 +36,7 @@ function Allseries({ series }) {
 }
 
 export async function getServerSideProps() {
-  const series = await getAllSeries();
+  const series = await getAllFullSeries();
 
   return {
     props: {
