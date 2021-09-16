@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import {
+  useColorModeValue,
   AspectRatio,
   Box,
   Flex,
@@ -15,10 +16,11 @@ import { ArrowLeftIcon } from '@chakra-ui/icons';
 import Footer from 'src/components/Footer';
 
 function Player({ episode }) {
+  const bg = useColorModeValue('#FFFFFF', '#1A202C');
   const router = useRouter();
 
   return (
-    <div>
+    <Box bgColor={bg}>
       <Head>
         <script
           // eslint-disable-next-line react/no-danger
@@ -101,7 +103,7 @@ function Player({ episode }) {
           <Footer />
         </Box>
       </Layout>
-    </div>
+    </Box>
   );
 }
 
