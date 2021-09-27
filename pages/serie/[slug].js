@@ -16,6 +16,16 @@ function SeriePage({ serie }) {
   );
 }
 
+export const getStaticPaths = async () => {
+  const series = await getAllFullSeries();
+  const slugs = series.map((s) => ({ params: { slug: s.slug } }));
+
+  return {
+    paths: slugs,
+    fallback: 'blocking',
+  };
+};
+
 export const getStaticProps = async ({ params }) => {
   const slug = params?.slug;
   const series = await getAllFullSeries();
@@ -32,17 +42,7 @@ export const getStaticProps = async ({ params }) => {
       serie,
       allSeries: series,
     },
-    revalidate: 60,
-  };
-};
-
-export const getStaticPaths = async () => {
-  const series = await getAllFullSeries();
-  const slugs = series.map((s) => ({ params: { slug: s.slug } }));
-
-  return {
-    paths: slugs,
-    fallback: false,
+    revalidate: 60 * 30, // 30 minutos
   };
 };
 
