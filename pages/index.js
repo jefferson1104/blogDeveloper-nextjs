@@ -189,6 +189,11 @@ function Home({ technologies, series, openAuthModal }) {
   );
 }
 
+export const getStaticPaths = async () => ({
+  paths: [],
+  fallback: 'blocking',
+});
+
 export const getStaticProps = async () => {
   const technologies = await getAllTechnologies();
   const series = await getAllSeries();
